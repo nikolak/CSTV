@@ -179,5 +179,8 @@ UpgradeLog*.htm
 *.bim.layout
 *.bim_*.settings
 
+# Playlist files
+*.m3u
+
 # Microsoft Fakes
 FakesAssemblies/
