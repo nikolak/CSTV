@@ -91,6 +91,7 @@
             this.watchButton.TabIndex = 0;
             this.watchButton.Text = "Watch Selected Channel";
             this.watchButton.UseVisualStyleBackColor = true;
+            this.watchButton.Click += new System.EventHandler(this.watchButton_Click);
             // 
             // channelListBox
             // 
@@ -108,6 +109,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(188, 20);
             this.searchTextBox.TabIndex = 2;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // tabControl1
             // 
@@ -176,6 +178,7 @@
             this.playButton.TabIndex = 0;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // stopButton
             // 
@@ -185,10 +188,11 @@
             this.stopButton.TabIndex = 1;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // vlcPlayer
             // 
-            this.vlcPlayer.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.vlcPlayer.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.vlcPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcPlayer.Location = new System.Drawing.Point(3, 3);
             this.vlcPlayer.Name = "vlcPlayer";
@@ -205,6 +209,7 @@
             this.pauseButton.TabIndex = 2;
             this.pauseButton.Text = "Pause";
             this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
             // MainForm
             // 
