@@ -35,13 +35,14 @@
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.playButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.vlcPlayer = new Vlc.DotNet.Forms.VlcControl();
             this.pauseButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.vlcPlayer = new Vlc.DotNet.Forms.VlcControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -133,16 +134,6 @@
             this.tabPage1.Text = "Player";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(667, 439);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Settings";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -164,6 +155,7 @@
             this.flowLayoutPanel1.Controls.Add(this.playButton);
             this.flowLayoutPanel1.Controls.Add(this.pauseButton);
             this.flowLayoutPanel1.Controls.Add(this.stopButton);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 401);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -180,6 +172,16 @@
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
+            // pauseButton
+            // 
+            this.pauseButton.Location = new System.Drawing.Point(84, 3);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(75, 23);
+            this.pauseButton.TabIndex = 2;
+            this.pauseButton.Text = "Pause";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
             // stopButton
             // 
             this.stopButton.Location = new System.Drawing.Point(165, 3);
@@ -189,6 +191,15 @@
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(246, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
             // 
             // vlcPlayer
             // 
@@ -200,16 +211,23 @@
             this.vlcPlayer.Size = new System.Drawing.Size(655, 392);
             this.vlcPlayer.TabIndex = 1;
             this.vlcPlayer.Text = "vlcControl1";
+            this.vlcPlayer.Buffering += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, float>(this.vlcPlayer_Buffering);
+            this.vlcPlayer.EncounteredError += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.EventArgs>(this.vlcPlayer_EncounteredError);
+            this.vlcPlayer.EndReached += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.EventArgs>(this.vlcPlayer_EndReached);
+            this.vlcPlayer.Paused += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.EventArgs>(this.vlcPlayer_Paused);
+            this.vlcPlayer.Playing += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.EventArgs>(this.vlcPlayer_Playing);
+            this.vlcPlayer.Stopped += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.EventArgs>(this.vlcPlayer_Stopped);
+            this.vlcPlayer.TimeChanged += new Vlc.DotNet.Core.VlcEventHandler<Vlc.DotNet.Forms.VlcControl, System.TimeSpan>(this.vlcPlayer_TimeChanged);
             // 
-            // pauseButton
+            // tabPage2
             // 
-            this.pauseButton.Location = new System.Drawing.Point(84, 3);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(75, 23);
-            this.pauseButton.TabIndex = 2;
-            this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(667, 439);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Settings";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -227,6 +245,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,6 +266,7 @@
         private System.Windows.Forms.Button stopButton;
         private Vlc.DotNet.Forms.VlcControl vlcPlayer;
         private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 
